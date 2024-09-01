@@ -17,6 +17,7 @@ function App() {
           <Route
             path="/course"
             element={authUser ? <Courses /> : <Navigate to="/signup" />}
+            /* element={<Courses/>} */
           />
           <Route path="/signup" element={<Signup />} />
         </Routes>
