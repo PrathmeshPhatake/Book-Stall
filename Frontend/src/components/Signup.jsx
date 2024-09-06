@@ -20,23 +20,20 @@ function Signup() {
       email: data.email,
       password: data.password,
     };
-    await axios
-      .post("http://localhost:4001/user/signup", userInfo)
-      .then((res) => {
-        console.log(res.data);
-        if (res.data) {
-          toast.success("Signup Successfully");
-          navigate(from, { replace: true });
-        }
-        localStorage.setItem("Users", JSON.stringify(res.data.user));
-      })
-      .catch((err) => {
-        if (err.response) {
-          console.log(err);
-          toast.error("Error: " + err.response.data.message);
-        }
-      });
+  
+    console.log(userInfo); // To verify the data before sending the request
+  
+    try {
+      const res = await axios.post("http://localhost:4001/user/signup", userInfo);
+      toast.success("Signup Successful");
+      navigate(from, { replace: true });
+    } catch (err) {
+      console.error("Error:", err.response?.data || err.message); // Log more detailed error
+      toast.error("Signup failed: " + (err.response?.data?.message || err.message));
+    }
   };
+  
+   
   return (
     <>
       <div className="flex h-screen items-center justify-center">
