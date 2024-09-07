@@ -16,32 +16,26 @@ function Signup() {
 
   const onSubmit = async (data) => {
     const userInfo = {
-      fullname:data.fullname,
+      fullname: data.fullname,
       email: data.email,
       password: data.password,
     };
-    console.log(userInfo)
-    await axios
-      .post("http://localhost:4001/user/signUp", userInfo)
-      .then((res) => {
-        console.log(res.data);
-        if (res.data) {
-          toast.success("SignUp  Successfully");
-          document.getElementById("my_modal_3").close();
-          setTimeout(() => {  
-            // window.location.reload();
-            navigate(from);
-            localStorage.setItem("Users", JSON.stringify(res.data.user));
-          }, 1000);
-        }
-      })
-      .catch((err) => {
-        if (err.response) {
-          console.log(err);
-          toast.error("Error: " + err.response.data.message);
-          setTimeout(() => {}, 2000);
-        }
-      });
+
+    try {
+      const res = await axios.post("http://localhost:4001/user/signup", userInfo);
+      if (res.data) {
+        setTimeout(() => {
+          toast.success("Signup Successful");
+          
+        }, 2000);
+        navigate(from, { replace: true });
+        window.location.reload();
+        
+      }
+      localStorage.setItem("Users",JSON.stringify(res.data));
+    } catch (err) {
+      toast.error("Error: " + err.message);
+    }
   };
    
   return (

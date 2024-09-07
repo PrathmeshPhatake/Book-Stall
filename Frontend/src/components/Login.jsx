@@ -94,7 +94,7 @@ function Login() {
               <p>
                 Not registered?{" "}
                 <Link
-                  to="/signup"
+                  to="/signUp"
                   className="underline text-blue-500 cursor-pointer"
                 >
                   Signup
