@@ -1,4 +1,4 @@
-# Book-store
+# Book-Sale
 Book store app using mern stack
 Front-End: HTML ,CSS, JAVASCRIPT, 
 Frame-work:REACT
