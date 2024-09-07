@@ -26,7 +26,7 @@ function contactus() {
 
                     <h2 class="mt-4 text-base font-medium text-gray-800 dark:text-white">Email</h2>
                     <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Our friendly team is here to help.</p>
-                    <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">hello@merakiui.com</p>
+                    <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">hello@BookStall.com</p>
                 </div>
 
                 <div>
