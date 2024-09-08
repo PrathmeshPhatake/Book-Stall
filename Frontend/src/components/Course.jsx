@@ -9,7 +9,7 @@ function Course() {
       try {
         const res = await axios.get("http://localhost:4001/book");
         console.log(res);
-        setBook(res.data);
+        setBook(res.data.filter((data)=>data.category==="paid"))
       } catch (error) {
         console.log(error);
       }
@@ -19,8 +19,8 @@ function Course() {
   return (
     <>
       <div className=" max-w-screen-2xl container mx-auto md:px-20 px-4">
-        <div className="mt-28 items-center justify-center text-center">
-          <h1 className="text-2xl  md:text-4xl">
+        <div className=" items-center justify-center text-center">
+          <h1 className="pt-24 text-2xl  md:text-4xl">
             We're delighted to have you{" "}
             <span className="text-pink-500"> Here! :)</span>
           </h1>
