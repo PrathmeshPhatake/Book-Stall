@@ -4,6 +4,7 @@ import Login from "./Login";
 import Logout from "./Logout";
 
 import { useAuth } from "../context/AuthProvider";
+import { Link } from "react-router-dom";
 
 function Navbar({cartItem}) {
   const [authUser, setAuthUser] = useAuth();
@@ -40,16 +41,17 @@ function Navbar({cartItem}) {
   const navItems = (
     <>
       <li>
-        <a href="/">Home</a>
+        {/* WE USED LINK OVER A acnchor tag */}
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <a href="/course">Course</a>
+        <Link to="/course">Course</Link>
       </li>
       <li>
-        <a href="/contact">Contact</a>
+        <Link to="/contact">Contact</Link>
       </li>
       <li>
-        <a href="/about">About</a>
+        <Link to="/about">About</Link>
       </li>
     </>
   );
@@ -150,7 +152,7 @@ function Navbar({cartItem}) {
 
             {/* for cart  */}
             <div className="relative">
-              <button className="btn btn-ghost">
+              <Link className="btn btn-ghost" to="/cart">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-7 w-7"
@@ -165,10 +167,10 @@ function Navbar({cartItem}) {
                     d="M3 3h2l.4 2m0 0L7 13a2 2 0 0 0 2 1h8a2 2 0 0 0 2-1l1.34-7H5.4m.34 0l-.34-2M7 13l-1.5 5.5m1.5-5.5L5 16m2-3h10M9 16h8a2 2 0 0 0 2-2M7 13l1.5 5.5m2-5.5L9 16M7 13l-1.5 5.5M17 11l1.5 5.5"
                   />
                 </svg>
-              </button>
-              <span className="absolute top-0 right-1 bg-red-500 text-white text-xs rounded-lg px-2">
+              </Link>
+              <div className="absolute top-0 right-1 bg-red-500 text-white text-xs rounded-lg px-2" to="/cart">
               {cartItem.length}
-              </span>
+              </div>
             </div>
 
             {authUser ? (

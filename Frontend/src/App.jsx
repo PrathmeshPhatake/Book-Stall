@@ -8,7 +8,7 @@ import About from "./about/about";
 import { Toaster } from "react-hot-toast";
 import { useAuth } from "./context/AuthProvider";
 import Navbar from "./components/Navbar";
-
+import Cart from "./components/Cart";
 function App() {
   const [authUser, setAuthUser] = useAuth();
   const [cartItem, setCartItem] = useState([]);
@@ -17,6 +17,7 @@ function App() {
     setCartItem([...cartItem, item]);
     console.log("Item added successfully:", item);
   };
+  console.log(cartItem);
 
   console.log(authUser);
 
@@ -36,6 +37,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/contact" element={<Contactus />} />
           <Route path="/about" element={<About />} />
+          <Route path="/cart" element={<Cart cartItems={cartItem} />} />
+
         </Routes>
         <Toaster />
       </div>
