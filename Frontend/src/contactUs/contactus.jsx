@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 function contactus() {
   return (
     <>
-    <Navbar/>
+   
     <section class="bg-white dark:bg-gray-900 mt-6" >
     <div class="container px-6 py-12 mx-auto">
         <div>

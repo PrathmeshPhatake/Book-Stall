@@ -7,7 +7,6 @@ import Footer from "../components/Footer";
 function Home() {
   return (
     <>
-      <Navbar />
       <Banner />
       <Freebook />
       <Footer />

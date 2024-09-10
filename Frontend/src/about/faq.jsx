@@ -4,7 +4,7 @@ function faq() {
   return (
    <>
    <section class="bg-white dark:bg-gray-900 mt-14">
-    <div class="container px-6 py-12 mx-auto">
+    <div class="container px-6 pt-12 pb-2 mx-auto">
         <h1 class="text-2xl font-semibold text-gray-800 lg:text-3xl dark:text-white">Frequently asked questions.</h1>
 
         <div class="grid grid-cols-1 gap-8 mt-8 lg:mt-16 md:grid-cols-2 xl:grid-cols-3">

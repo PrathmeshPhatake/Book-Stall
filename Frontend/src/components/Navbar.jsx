@@ -5,7 +5,7 @@ import Logout from "./Logout";
 
 import { useAuth } from "../context/AuthProvider";
 
-function Navbar() {
+function Navbar({cartItem}) {
   const [authUser, setAuthUser] = useAuth();
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -167,7 +167,7 @@ function Navbar() {
                 </svg>
               </button>
               <span className="absolute top-0 right-1 bg-red-500 text-white text-xs rounded-lg px-2">
-                5
+              {cartItem.length}
               </span>
             </div>
 

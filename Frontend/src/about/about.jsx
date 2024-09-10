@@ -5,7 +5,6 @@ import Faq from './faq'
 function about() {
   return (
    <>
-   <Navbar/>
    <Faq/>
    <Footer/>
    </>
