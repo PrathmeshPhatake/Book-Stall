@@ -5,9 +5,12 @@ import Logout from "./Logout";
 
 import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
-function Navbar({cartItem}) {
+function Navbar() {
   const [authUser, setAuthUser] = useAuth();
+  const {cartItems}=useCart();
+/*   console.log("cartitem:",cartItems); */
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -169,7 +172,7 @@ function Navbar({cartItem}) {
                 </svg>
               </Link>
               <div className="absolute top-0 right-1 bg-red-500 text-white text-xs rounded-lg px-2" to="/cart">
-              {cartItem.length}
+              {cartItems.length}
               </div>
             </div>
 

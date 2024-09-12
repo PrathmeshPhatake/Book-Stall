@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-function Cards({ item, addToCart }) {
+import { useCart } from "../context/CartContext"
+function Cards({ item }) {
+  const { addToCart } = useCart();
   return (
     <>
       <div className="mt-4 my-3 p-3">
