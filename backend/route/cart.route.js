@@ -1,5 +1,5 @@
 import express from "express";
-import { saveCart, getCart } from "../controller/cart.controller.js"
+import { saveCart, getCart,handleDelete } from "../controller/cart.controller.js"
 
 const router = express.Router();
 
@@ -9,5 +9,5 @@ router.post("/savecart", saveCart);
 // Route to get the cart
 router.get("/getcart/:userId", getCart);
 
-
+router.delete("/handleDelete/:itemId",handleDelete);
 export default router;

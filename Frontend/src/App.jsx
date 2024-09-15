@@ -24,7 +24,7 @@
     return (
       <>
         <div className="dark:bg-slate-900 dark:text-white">
-          <Navbar cartItem={cartItem} />
+          <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             

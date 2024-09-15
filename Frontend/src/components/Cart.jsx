@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 import { useAuth } from "../context/AuthProvider";
 import axios from "axios";
 import { useCart } from "../context/CartContext";
@@ -58,8 +59,36 @@ const getCart = async () => {
   // Calculate total price
   const totalPrice = cartItems.reduce((acc, item) => acc + (item.price * (item.quantity || 1)), 0);
 
+
+  // delete item from cart 
+  // Placeholder function for handling item deletion
+  const handleDelete = async (itemId) => {
+    console.log("Deleting item with ID:", itemId); // Add log for debugging
+
+    try {
+      const res = await axios.delete(`http://localhost:4001/cart/handleDelete/${itemId}`, {
+        data: { userId: user._id }, // Include userId in the request body
+      });
+
+      if (res.status === 200) {
+        // Update the cart items state locally after successful deletion
+        setCartItems(prevItems => prevItems.filter(item => item._id !== itemId));
+        console.log("Item deleted successfully");
+      } else {
+        console.error("Failed to delete the item. Status code:", res.status);
+      }
+    } catch (error) {
+      console.error("Error occurred while deleting item:", error.response?.data || error.message);
+    }
+  };
+    
+
+
+
+
   return (
-    <div className="container mx-auto p-4 py-auto">
+    <>
+    <div className="container mx-auto my-auto p-4 py-auto">
       <h1 className="text-2xl font-bold mb-4 mt-20 text-center">Your Cart</h1>
       {cartItems.length === 0 ? (
         <p className="text-center">Your cart is empty.</p>
@@ -111,19 +140,14 @@ const getCart = async () => {
       <Link to="/" className="mt-4 inline-block bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-700 duration-300">
         Back to Home
       </Link>
+      <div className="pt-8">
+
+      <Footer/>
+      </div>
     </div>
+   </>
   );
 }
 
-// Placeholder function for handling item deletion
-const handleDelete = async (itemId) => {
-  try {
-    await axios.delete(`http://localhost:4001/cart/delete/${itemId}`);
-    console.log("Item deleted successfully");
-    // Optionally, update the cart items state to reflect the deletion
-  } catch (error) {
-    console.error("Error occurred while deleting item:", error);
-  }
-};
 
 export default Cart;
