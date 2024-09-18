@@ -93,7 +93,7 @@ const getCart = async () => {
       {cartItems.length === 0 ? (
         <p className="text-center">Your cart is empty.</p>
       ) : (
-        <div>
+        <div className="overflow-x-auto">
           <table className="w-full border-collapse">
             <thead>
               <tr>
@@ -111,14 +111,14 @@ const getCart = async () => {
                   <td className="border p-2">{item.quantity || 1}</td>
                   <td className="border p-2">${item.price.toFixed(2)}</td>
                   <td className="border p-2">${(item.price * (item.quantity || 1)).toFixed(2)}</td>
-                  <td className="border p-2 flex justify-center">
+                  <td className="border p-2 py-5 md:py-3 flex justify-center items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth="1.5"
                       stroke="currentColor"
-                      className="w-6 h-6 cursor-pointer"
+                      className="w-6 h-6 cursor-pointer flex justify-center items-center"
                       onClick={() => handleDelete(item._id)}
                     >
                       <path

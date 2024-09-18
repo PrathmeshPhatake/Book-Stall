@@ -97,9 +97,9 @@ function Navbar() {
                 {navItems}
               </ul>
             </div>
-            <a className=" text-2xl font-bold cursor-pointer">Book-Stall</a>
+            <a className=" md:text-2xl font-bold cursor-pointer">Book-Stall</a>
           </div>
-          <div className="navbar-end space-x-3">
+          <div className="navbar-end space-x-0 md:space-x-2">
             <div className="navbar-center hidden lg:flex">
               <ul className="menu menu-horizontal px-1">{navItems}</ul>
             </div>
