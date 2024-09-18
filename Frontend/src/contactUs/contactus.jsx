@@ -1,8 +1,9 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
 function contactus() {
+
+  console.log(URL);
   return (
     <>
       <section class="bg-white dark:bg-gray-900 mt-6">
@@ -152,13 +153,14 @@ function contactus() {
             </div>
 
             <div class="p-4 py-6 rounded-lg bg-gray-50 dark:bg-gray-800 md:p-8">
-              <form>
+              <form action={URL} method="POST">
                 <div class="-mx-2 md:items-center md:flex">
                   <div class="flex-1 px-2">
                     <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">
                       First Name
                     </label>
                     <input
+                    name=" Firstname"
                       type="text"
                       placeholder="Prathmesh "
                       class="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -170,6 +172,7 @@ function contactus() {
                       Last Name
                     </label>
                     <input
+                    name="LastName"
                       type="text"
                       placeholder="Phatake"
                       class="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -183,6 +186,7 @@ function contactus() {
                   </label>
                   <input
                     type="email"
+                    name="email"
                     placeholder="prathmesh@example.com"
                     class="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   />
@@ -193,6 +197,7 @@ function contactus() {
                     Message
                   </label>
                   <textarea
+                  name="message"
                     class="block w-full h-32 px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg md:h-56 dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     placeholder="Message"
                   ></textarea>
