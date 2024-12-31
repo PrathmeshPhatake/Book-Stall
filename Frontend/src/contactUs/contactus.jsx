@@ -1,39 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import toast from "react-hot-toast";
 function contactus() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
+  });
 
-  console.log(URL);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("https://formspree.io/f/mqazvzrn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast.success("Your message was sent successfully!");
+        setFormData({ firstName: "", lastName: "", email: "", message: "" });
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again later.");
+    }
+  };
+
   return (
     <>
-      <section class="bg-white dark:bg-gray-900 mt-6">
-        <div class="container px-6 py-12 mx-auto">
+      <section className="bg-white dark:bg-gray-900 mt-6">
+        <div className="container px-6 py-12 mx-auto">
           <div>
-            <p class="font-medium text-blue-500 dark:text-blue-400">
+            <p className="font-medium text-blue-500 dark:text-blue-400">
               Contact us
             </p>
 
-            <h1 class="mt-2 text-2xl font-semibold text-gray-800 md:text-3xl dark:text-white">
+            <h1 className="mt-2 text-2xl font-semibold text-gray-800 md:text-3xl dark:text-white">
               Feel free to ask our team
             </h1>
 
-            <p class="mt-3 text-gray-500 dark:text-gray-400">
+            <p className="mt-3 text-gray-500 dark:text-gray-400">
               We’d love to hear from you. Please fill out this form or shoot us
               an email.
             </p>
           </div>
 
-          <div class="grid grid-cols-1 gap-12 mt-10 lg:grid-cols-2">
-            <div class="grid grid-cols-1 gap-12 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-12 mt-10 lg:grid-cols-2">
+            <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
               <div>
-                <span class="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
+                <span className="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-5 h-5"
+                    className="w-5 h-5"
                   >
                     <path
                       stroke-linecap="round"
@@ -43,26 +74,26 @@ function contactus() {
                   </svg>
                 </span>
 
-                <h2 class="mt-4 text-base font-medium text-gray-800 dark:text-white">
+                <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">
                   Email
                 </h2>
-                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
                   Our friendly team is here to help.
                 </p>
-                <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">
+                <p className="mt-2 text-sm text-blue-500 dark:text-blue-400">
                   hello@BookStall.com
                 </p>
               </div>
 
               <div>
-                <span class="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
+                <span className="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-5 h-5"
+                    className="w-5 h-5"
                   >
                     <path
                       stroke-linecap="round"
@@ -77,26 +108,26 @@ function contactus() {
                   </svg>
                 </span>
 
-                <h2 class="mt-4 text-base font-medium text-gray-800 dark:text-white">
+                <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">
                   Live chat
                 </h2>
-                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
                   Our friendly team is here to help.
                 </p>
-                <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">
+                <p className="mt-2 text-sm text-blue-500 dark:text-blue-400">
                   Start new chat
                 </p>
               </div>
 
               <div>
-                <span class="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
+                <span className="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-5 h-5"
+                    className="w-5 h-5"
                   >
                     <path
                       stroke-linecap="round"
@@ -111,26 +142,26 @@ function contactus() {
                   </svg>
                 </span>
 
-                <h2 class="mt-4 text-base font-medium text-gray-800 dark:text-white">
+                <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">
                   Office
                 </h2>
-                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
                   Come say hello at our office HQ.
                 </p>
-                <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">
+                <p className="mt-2 text-sm text-blue-500 dark:text-blue-400">
                   100 Smith Street Collingwood VIC 3066 AU
                 </p>
               </div>
 
               <div>
-                <span class="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
+                <span className="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 dark:bg-gray-800">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-5 h-5"
+                    className="w-5 h-5"
                   >
                     <path
                       stroke-linecap="round"
@@ -140,71 +171,83 @@ function contactus() {
                   </svg>
                 </span>
 
-                <h2 class="mt-4 text-base font-medium text-gray-800 dark:text-white">
+                <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">
                   Phone
                 </h2>
-                <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
                   Mon-Fri from 8am to 5pm.
                 </p>
-                <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">
+                <p className="mt-2 text-sm text-blue-500 dark:text-blue-400">
                   +1 (555) 000-0000
                 </p>
               </div>
             </div>
 
-            <div class="p-4 py-6 rounded-lg bg-gray-50 dark:bg-gray-800 md:p-8">
-              <form action={URL} method="POST">
-                <div class="-mx-2 md:items-center md:flex">
-                  <div class="flex-1 px-2">
-                    <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+            <div className="p-4 py-6 rounded-lg bg-gray-50 dark:bg-gray-800 md:p-8">
+              <form onSubmit={handleSubmit}>
+                <div className="-mx-2 md:items-center md:flex">
+                  <div className="flex-1 px-2">
+                    <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
                       First Name
                     </label>
                     <input
-                    name=" Firstname"
+                      name="firstName"
                       type="text"
-                      placeholder="Prathmesh "
-                      class="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      placeholder="Prathmesh"
+                      className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
                   </div>
 
-                  <div class="flex-1 px-2 mt-4 md:mt-0">
-                    <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                  <div className="flex-1 px-2 mt-4 md:mt-0">
+                    <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
                       Last Name
                     </label>
                     <input
-                    name="LastName"
+                      name="lastName"
                       type="text"
+                      value={formData.lastName}
+                      onChange={handleChange}
                       placeholder="Phatake"
-                      class="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                      className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
                   </div>
                 </div>
 
-                <div class="mt-4">
-                  <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                <div className="mt-4">
+                  <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
                     Email address
                   </label>
                   <input
                     type="email"
                     name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="prathmesh@example.com"
-                    class="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   />
                 </div>
 
-                <div class="w-full mt-4">
-                  <label class="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                <div className="mt-4">
+                  <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
                     Message
                   </label>
                   <textarea
-                  name="message"
-                    class="block w-full h-32 px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg md:h-56 dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                    placeholder="Message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows="4"
+                    placeholder="Type your message..."
+                    className="block w-full px-5 py-2.5 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   ></textarea>
                 </div>
 
-                <button class="w-full px-6 py-3 mt-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
-                  Send message
+                <button
+                  type="submit"
+                  className="px-6 py-2 mt-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+                >
+                  Send Message
                 </button>
               </form>
             </div>
